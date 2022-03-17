@@ -106,7 +106,7 @@ public class DriveTrain extends Subsystem {
     private AHRS navx;
 
     //uncomment and set Pigeon ID above
-    //private final PigeonIMU m_pigeon = new PigeonIMU(DRIVETRAIN_PIGEON_ID)
+    //private final PigeonIMU m_pigeon = new PigeonIMU(DRIVETRAIN_PIGEON_ID) //FIXME 
 
     private SwerveDriveOdometry m_odometry;
 
@@ -180,8 +180,8 @@ public class DriveTrain extends Subsystem {
                 new Translation2d(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),
                 new Translation2d(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0));
 
-        navx = new AHRS(I2C.Port.kOnboard);
-        System.out.println("Navx firmware: " + navx.getFirmwareVersion());
+        navx = new AHRS(I2C.Port.kOnboard); //FIXME why is this declared here?
+        //System.out.println("Navx firmware: " + navx.getFirmwareVersion());
 
         m_odometry = new SwerveDriveOdometry(kinematics, Rotation2d.fromDegrees(getAngle()));
 
@@ -191,12 +191,16 @@ public class DriveTrain extends Subsystem {
         m_odometry.resetPosition(new Pose2d(xPos, yPos, Rotation2d.fromDegrees(angle)), Rotation2d.fromDegrees(angle));
     }
 
+    //Remove below function
     public void resetYaw() {
         navx.reset();
+        //m_pigeon.setFusedHeading(0.0);
     }
 
-    //Uncoment below, remove above for Pigeon
-    
+    //Uncomment below, remove above for Pigeon
+    //public void resetYaw() {
+    //    
+    //}
 
     @Override
     public void initDefaultCommand() {

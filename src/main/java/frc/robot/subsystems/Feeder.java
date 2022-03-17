@@ -34,6 +34,10 @@ public class Feeder extends Subsystem {
     feedMotor.set(speed);
   }
 
+  public boolean ballStatus(){
+    return !feedTriggerSwitch.get();
+  }
+
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new ClimbCommand());

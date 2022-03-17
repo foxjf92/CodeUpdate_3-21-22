@@ -36,6 +36,8 @@ public class IntakeCollect extends Command {
     Robot.intake.setIntakeSpeed(.75*inSpeed);
     Robot.intake.extend(.25);
 
+    //FIXME Work out logic to run feed while intaking, maybe here?
+
     // if(Robot.oi.shooterController.getRawButton(4)) {
     //   SmartDashboard.putString("ExtendState", "EXTEND");
     //   Robot.climber.extend(EXTEND_SPEED);

@@ -36,6 +36,7 @@ public class DriveCommand extends Command {
 
         if(Robot.oi.driveController.getRawButtonPressed(5)) {
             Robot.driveTrain.resetYaw();
+            //FIXME may need to call different function for Pigeon?
         }
 
         Robot.driveTrain.drive(new Translation2d(forward, strafe), rotation, fieldOrientedFlag);
