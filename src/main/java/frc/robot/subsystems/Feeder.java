@@ -22,21 +22,28 @@ public class Feeder extends Subsystem {
   private final int FEED_MOTOR_CAN_ID = 11;
   
   CANSparkMax feedMotor;
-  DigitalInput feedTriggerSwitch;
+  DigitalInput feedTriggerSwitch1;
+  //DigitalInput feedTriggerSwitch2; //reserved for additional switch if needed
 
   public Feeder() {
     feedMotor = new CANSparkMax(FEED_MOTOR_CAN_ID, MotorType.kBrushless);
     feedMotor.setSmartCurrentLimit(20);
-    feedTriggerSwitch = new DigitalInput(0);
+    feedTriggerSwitch1 = new DigitalInput(0);
+    //feedTriggerSwitch2 = new DigitalInput(1);
   }
 
   public void feed(double speed) {
     feedMotor.set(speed);
   }
 
-  public boolean ballStatus(){
-    return !feedTriggerSwitch.get();
+  public boolean ballStatus1(){
+    return !feedTriggerSwitch1.get();
   }
+
+  // public boolean ballStatus2(){
+  //   return !feedTriggerSwitch2.get();
+
+  // }
 
   @Override
   public void initDefaultCommand() {

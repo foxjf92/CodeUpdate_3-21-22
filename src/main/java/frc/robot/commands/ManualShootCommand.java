@@ -11,34 +11,31 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
-public class IntakeCollect extends Command {
-  //private static final double EXTEND_SPEED = 0.5;
-
+public class ManualShootCommand extends Command {
+  
   /**
    * Creates a new Collect command.
    */
-  public IntakeCollect() {
+  public ManualShootCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    requires(Robot.intake);
+    requires(Robot.shooter);
     requires(Robot.feeder);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.intake.setExtenderCurrentLimit(5);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
-    final double intakeTriggerCheck = -Robot.oi.shooterController.getRawAxis(2); //should be left trigger
+    final double shootTriggerCheck = -Robot.oi.shooterController.getRawAxis(3); //should be right trigger
     
-    if(intakeTriggerCheck > 0.1){
-      Robot.intake.setIntakeSpeed(.75);
-      Robot.intake.extend(.25);
-
+    if(shootTriggerCheck > 0.1){
+      Robot.feeder.feed(1.0);
+    
       if(Robot.feeder.ballStatus1()){
         Robot.feeder.feed(.5);
       }
@@ -70,6 +67,7 @@ public class IntakeCollect extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void interrupted() {
+    Robot.shooter.setMotorRPM(0);
   }
 
   // Returns true when the command should end.

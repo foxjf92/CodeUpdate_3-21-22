@@ -15,7 +15,7 @@ import edu.wpi.first.math.MathUtil;
 import frc.robot.Robot;
 import frc.robot.subsystems.Shooter;
 
-public class ManualShooterCommand extends Command {
+public class ManualShooterSpeed extends Command {
   /**
    * Creates a new ManualShooterCommand.
    */
@@ -27,7 +27,7 @@ public class ManualShooterCommand extends Command {
 
   double rpmSetpoint = 0.0;
 
-  public ManualShooterCommand() {
+  public ManualShooterSpeed() {
     // Use addRequirements() here to declare subsystem dependencies.
     requires(Robot.shooter);
   }
@@ -43,6 +43,7 @@ public class ManualShooterCommand extends Command {
   public void execute() {
 
     int pov = Robot.oi.shooterController.getPOV();
+    
     if(pov == 0) {
       rpmSetpoint += INCREMENT;
     } else if(pov == 180) {
@@ -58,6 +59,7 @@ public class ManualShooterCommand extends Command {
 
     double rpm = Robot.shooter.getRpm();
     double sendValue = MathUtil.clamp(rpmSetpoint, rpm - 500, rpm + 500);
+    
     Robot.shooter.setMotorRPM(sendValue);
     SmartDashboard.putNumber("Shooter Setpoint", rpmSetpoint);
 

@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.DriveXY;
-import frc.robot.commands.LoadBall;
+//import frc.robot.commands.LoadBall;
 import frc.robot.commands.SetShooterSpeed;
 import frc.robot.commands.ShootBall;
 
@@ -18,7 +18,7 @@ public class DriveToWallAndShoot extends CommandGroup {
    * Add your docs here.
    */
   public DriveToWallAndShoot() {
-    addSequential(new SetShooterSpeed(ManualShooterCommand.FAR_SETPOINT));
+    addSequential(new SetShooterSpeed(ManualShooterSpeed.FAR_SETPOINT));
     //addSequential(new DriveXY(100, 0, 0, 0.5));
     //addSequential(new DriveXY(120, 0, 0, 0.2));
     //addSequential(new SetShooterSpeed(ManualShooterCommand.FAR_SETPOINT));
@@ -28,7 +28,7 @@ public class DriveToWallAndShoot extends CommandGroup {
     //addSequential(new LoadBall());
     //addSequential(new ShootBall());
     //addSequential(new SetShooterSpeed(ManualShooterCommand.FAR_SETPOINT));
-    addSequential(new LoadBall());
+    //addSequential(new LoadBall());
     addSequential(new ShootBall());
     addSequential(new DriveXY(100, 0, 0, 0.5));
     //addSequential(new DriveXY(100, 50, 0, 0.3));

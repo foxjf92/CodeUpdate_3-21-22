@@ -14,12 +14,13 @@ public class ShootBall extends Command {
   public ShootBall() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.shooter);
+    requires(Robot.feeder);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.shooter.setFeedSpeed(1.0);
+    Robot.feeder.feed(1.0);
     System.out.println("Shooting RPM = " + Robot.shooter.getRpm());
   }
 
@@ -31,19 +32,19 @@ public class ShootBall extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !Robot.shooter.ballReady();
+    return !Robot.feeder.ballStatus1();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.shooter.setFeedSpeed(0.0);
+    Robot.feeder.feed(0.0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.shooter.setFeedSpeed(0.0);
+    Robot.feeder.feed(0.0);
   }
 }

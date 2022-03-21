@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
-import frc.robot.commands.ManualShooterCommand;
+import frc.robot.commands.ManualShooterSpeed;
 //import edu.wpi.first.wpiutil.math.*;
 
 public class Shooter extends Subsystem {
@@ -43,7 +43,7 @@ public class Shooter extends Subsystem {
 
   TalonFX shooterMotor;
   CANSparkMax feedMotor;
-  DigitalInput feedTriggerSwitch;
+  //DigitalInput feedTriggerSwitch;
 
   public Shooter() {
     
@@ -53,13 +53,14 @@ public class Shooter extends Subsystem {
     shooterMotor.config_kP(0, 0.010, 0);
 
 
-    feedMotor = new CANSparkMax(FEED_MOTOR_CAN_ID, MotorType.kBrushless);
-    feedMotor.setIdleMode(IdleMode.kCoast);
-    feedMotor.setSmartCurrentLimit(20);
+    //Leftover from 2020 code, separated into feed subsystem
+    // feedMotor = new CANSparkMax(FEED_MOTOR_CAN_ID, MotorType.kBrushless);
+    // feedMotor.setIdleMode(IdleMode.kCoast);
+    // feedMotor.setSmartCurrentLimit(20);
 
     rpmSetpoint = DEFAULT_RPM;
 
-    feedTriggerSwitch = new DigitalInput(0);
+    //feedTriggerSwitch = new DigitalInput(0);
   }
 
   public Double getRpm() {
@@ -72,14 +73,14 @@ public class Shooter extends Subsystem {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putBoolean("Ball Ready", ballReady());
+    //SmartDashboard.putBoolean("Ball Ready", ballReady());
     SmartDashboard.putNumber("Shooter RPM", getRpm());
     SmartDashboard.putNumber("Shooter VEL", shooterMotor.getSelectedSensorVelocity());
   }
 
-  public boolean ballReady() {
-   return !feedTriggerSwitch.get();
-  }
+  // public boolean ballReady() {
+  //  return !feedTriggerSwitch.get();
+  // }
 
   public void setMotorRPM(double rpm) {
 
@@ -97,13 +98,13 @@ public class Shooter extends Subsystem {
     shooterMotor.set(ControlMode.Velocity, vel);
   }
 
-  public void setFeedSpeed(double speed) {
-    feedMotor.set(.5*speed);
-  }
+  // public void setFeedSpeed(double speed) {
+  //   feedMotor.set(.5*speed);
+  // }
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ManualShooterCommand());
+    setDefaultCommand(new ManualShooterSpeed());
   }
 
 // public boolean ballReady() {
