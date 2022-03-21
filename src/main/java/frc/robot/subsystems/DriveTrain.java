@@ -117,6 +117,7 @@ public class DriveTrain extends Subsystem {
     private NetworkTableEntry backRightEntry = Shuffleboard.getTab("DriveTrain").add("Back Right Angle", 0).getEntry();
 
     public DriveTrain() {
+
         rightFrontDriveMotor = new CANSparkMax(DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, CANSparkMax.MotorType.kBrushless);
         rightFrontDriveMotor.setInverted(false);
         rightFrontDriveMotor.setSmartCurrentLimit(60);
@@ -182,6 +183,8 @@ public class DriveTrain extends Subsystem {
 
         navx = new AHRS(I2C.Port.kOnboard); //FIXME why is this declared here?
         //System.out.println("Navx firmware: " + navx.getFirmwareVersion());
+
+        navx.calibrate();
 
         m_odometry = new SwerveDriveOdometry(kinematics, Rotation2d.fromDegrees(getAngle()));
 
