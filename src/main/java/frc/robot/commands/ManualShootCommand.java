@@ -31,12 +31,10 @@ public class ManualShootCommand extends Command {
   @Override
   public void execute() {
 
-    boolean shootTriggerCheck = false;
     double shootTriggerValue = Robot.oi.shooterController.getRawAxis(3); //should be right trigger
     
     if(shootTriggerValue > 0.1){
       Robot.feeder.feed(1.0);
-      shootTriggerCheck = true;
     }
     else{
       Robot.feeder.feed(0);
