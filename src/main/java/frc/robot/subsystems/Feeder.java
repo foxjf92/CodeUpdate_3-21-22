@@ -7,16 +7,13 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ClimbCommand;
+import frc.robot.commands.DoNothing;
 
 public class Feeder extends Subsystem {
   private final int FEED_MOTOR_CAN_ID = 11;
@@ -47,7 +44,7 @@ public class Feeder extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ClimbCommand());
+    setDefaultCommand(new DoNothing());
   }
  
 }

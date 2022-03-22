@@ -34,10 +34,10 @@ public class IntakePosition extends Command {
   @Override
   public void execute() {
 
-    if(Robot.oi.shooterController.getRawButton(4)) {
+    if(Robot.oi.shooterController.getRawButton(4)) { // Y Button
       SmartDashboard.putString("ExtendState", "EXTEND");
       Robot.intake.extend(SPEED);
-    } else if(Robot.oi.shooterController.getRawButton(3)){
+    } else if(Robot.oi.shooterController.getRawButton(3)){ // X Button
       SmartDashboard.putString("ExtendState", "RETRACT");
       Robot.intake.retract(-SPEED);
     } else {
@@ -56,6 +56,11 @@ public class IntakePosition extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    if(Robot.oi.shooterController.getRawButtonReleased(4) || Robot.oi.shooterController.getRawButtonReleased(3)){
+        return true;
+    }
+    else{
+        return false;
+    }
   }
 }

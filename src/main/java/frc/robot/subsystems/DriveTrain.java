@@ -121,26 +121,34 @@ public class DriveTrain extends Subsystem {
         rightFrontDriveMotor = new CANSparkMax(DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, CANSparkMax.MotorType.kBrushless);
         rightFrontDriveMotor.setInverted(false);
         rightFrontDriveMotor.setSmartCurrentLimit(60);
+        rightFrontRotateMotor.setSmartCurrentLimit(60);
         rightFrontRotateMotor = new CANSparkMax(DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR, CANSparkMax.MotorType.kBrushless);
         rightFrontDriveMotor.setIdleMode(IdleMode.kBrake);
+        rightFrontRotateMotor.setIdleMode(IdleMode.kBrake);
 
         leftFrontDriveMotor = new CANSparkMax(DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, CANSparkMax.MotorType.kBrushless);
         leftFrontDriveMotor.setInverted(false);
         leftFrontDriveMotor.setSmartCurrentLimit(60);
+        leftFrontRotateMotor.setSmartCurrentLimit(60);
         leftFrontRotateMotor = new CANSparkMax(DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR, CANSparkMax.MotorType.kBrushless);
         leftFrontDriveMotor.setIdleMode(IdleMode.kBrake);
+        leftFrontRotateMotor.setIdleMode(IdleMode.kBrake);
 
         rightBackDriveMotor = new CANSparkMax(DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR, CANSparkMax.MotorType.kBrushless);
         rightBackDriveMotor.setInverted(false);
         rightBackDriveMotor.setSmartCurrentLimit(60);
+        rightBackRotateMotor.setSmartCurrentLimit(60);
         rightBackRotateMotor = new CANSparkMax(DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR, CANSparkMax.MotorType.kBrushless);
         rightBackDriveMotor.setIdleMode(IdleMode.kBrake);
+        rightBackRotateMotor.setIdleMode(IdleMode.kBrake);
 
         leftBackDriveMotor = new CANSparkMax(DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR, CANSparkMax.MotorType.kBrushless);
         leftBackDriveMotor.setInverted(false);
         leftBackDriveMotor.setSmartCurrentLimit(60);
+        leftBackRotateMotor.setSmartCurrentLimit(60);
         leftBackRotateMotor = new CANSparkMax(DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR, CANSparkMax.MotorType.kBrushless);
         leftBackDriveMotor.setIdleMode(IdleMode.kBrake);
+        leftBackRotateMotor.setIdleMode(IdleMode.kBrake);
 
         frontLeftModule = new Mk2SwerveModuleBuilder(
                 new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0))

@@ -7,9 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -17,7 +14,10 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import org.frcteam2910.common.robot.Utilities;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
+
+import frc.robot.commands.DoNothing;
+import frc.robot.commands.IntakeHoldRetracted;
+import frc.robot.commands.IntakePosition;
 
 
 public class Intake extends Subsystem {
@@ -90,7 +90,8 @@ public class Intake extends Subsystem {
 
   @Override
   protected void initDefaultCommand() {
-    // TODO Auto-generated method stub    
+    // TODO Auto-generated method stub  
+    setDefaultCommand(new IntakeHoldRetracted());  
   }
 
   // public double getExtenderPosition() {
