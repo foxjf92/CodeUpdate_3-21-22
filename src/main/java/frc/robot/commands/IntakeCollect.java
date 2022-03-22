@@ -33,7 +33,7 @@ public class IntakeCollect extends Command {
   @Override
   public void execute() {
 
-    final double intakeTriggerCheck = -Robot.oi.shooterController.getRawAxis(2); //should be left trigger
+    double intakeTriggerCheck = -Robot.oi.shooterController.getRawAxis(2); //should be left trigger
     
     if(intakeTriggerCheck > 0.1){
       Robot.intake.setIntakeSpeed(.75);

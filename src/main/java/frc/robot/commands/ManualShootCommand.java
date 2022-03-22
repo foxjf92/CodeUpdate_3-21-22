@@ -66,13 +66,5 @@ public class ManualShootCommand extends Command {
   @Override
   public boolean isFinished() {
     return true;
-
-    if(ManualShootCommand.shootTriggerCheck){
-      return true;
-    }
-    else{
-      return false;
-    }
-    
   }
 }
