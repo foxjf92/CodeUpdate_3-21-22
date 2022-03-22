@@ -42,9 +42,6 @@ public class ManualShootCommand extends Command {
       Robot.feeder.feed(0);
     }
     
-
-    
-    
     //FIXME Work out logic to run feed while intaking, maybe here?
 
     // if(Robot.oi.shooterController.getRawButton(4)) {

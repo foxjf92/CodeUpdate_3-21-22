@@ -25,7 +25,6 @@ public class Shooter extends Subsystem {
   private Double rpmSetpoint;
 
   private final int SHOOTER_MOTOR_CAN_ID = 13;
-  private final int FEED_MOTOR_CAN_ID = 11;
 
   public static final double DEFAULT_RPM = 0.0;
   public static final double MAX_RPM = 6500.0;
