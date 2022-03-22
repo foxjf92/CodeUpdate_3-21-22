@@ -57,7 +57,7 @@ public class OI {
     public XboxController shooterController;
     public OI() {
         driveController = new XboxController(0);
-        shooterController = new XboxController(1);
+        shooterController = new XboxController(1);    
     }
 
 }
